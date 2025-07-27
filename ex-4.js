@@ -374,4 +374,24 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+function memberBills(bills) {
+  return bills
+    .filter(function (bill) {
+      return bill.member !== null;
+    })
+    .map(function (bill) {
+      return bill.member.name;
+    })
+    .reduce(function (accumulator, name) {
+      if (!accumulator.includes(name)) {
+        accumulator.push(name);
+      }
+      return accumulator;
+    }, []);
+}
+
+//ซ้ำกับตัวใน array ไหม ถ้าไม่ +1 แล้วเพิมใน array
+//filter ซ้ำกับตัวในตัวแปลไหม ถ้าซ้ำ = fulse แล้วค่อยนับจำนวนรวม
+
+const totalMembers = "Unique Members Count: " + memberBills(bills);
+console.log(totalMembers);
